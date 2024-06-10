@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from './users.types';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { UserFormComponent } from '../user-form/user-form.component';
 
 @Component({
   selector: 'app-users',
@@ -17,7 +21,12 @@ export class UsersComponent {
     'options',
   ];
 
-  constructor() {
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatSort) sort: MatSort;
+
+  constructor(
+    public dialog: MatDialog
+  ) {
     const users: User[] = [
       {
         avatar: 'avatarUrl',
@@ -61,6 +70,27 @@ export class UsersComponent {
       },
     ];
     this.dataSource = new MatTableDataSource(users);
+  }
+
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
+
+  onSearch(value: string) {
+    // Implement your search logic here
+    console.log('Searching for:', value);
+  }
+
+  openUserFormDialog(): void {
+    const dialogRef = this.dialog.open(UserFormComponent, {
+      width: '60%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // Handle dialog result here if needed
+    });
   }
 
   getStatusClass(status: 'Ativo' | 'Pendente' | 'Bloqueado') {

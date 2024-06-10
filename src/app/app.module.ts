@@ -13,9 +13,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input'
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserFormComponent } from './user-form/user-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, UsersComponent],
+  declarations: [AppComponent, HeaderComponent, UsersComponent, UserFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +34,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    MatSortModule,
+    MatInputModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

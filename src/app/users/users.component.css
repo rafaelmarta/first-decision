@@ -1,13 +1,26 @@
-.row {
+/* .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+} */
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* This will allow the items to wrap onto the next line if the container is too small */
 }
+
+/* .user-info {
+  display: flex;
+  align-items: center;
+} */
 
 .user-info {
   display: flex;
   align-items: center;
+  height: 52px;
 }
 
 .avatar-icon {
@@ -22,7 +35,18 @@ table {
   width: 100%;
 }
 
-.mat-header-cell,
-.mat-cell {
-  text-align: left;
+.custom-height {
+  height: 36px; /* Adjust this value as needed */
+}
+
+.select-wrapper {
+  display: inline-block; /* Ensures the wrapper only takes up as much space as needed */
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-50 {
+  width: 50%;
 }
