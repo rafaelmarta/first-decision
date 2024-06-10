@@ -1,0 +1,137 @@
+h4 {
+  color: gray;
+}
+
+label {
+  color: black;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.open-dialog {
+  padding: 0.6rem 2.2rem;
+
+  font-size: 1rem;
+  color: var(--white);
+  border: none;
+  border-radius: 0.6rem;
+  background-color: var(--malibu);
+  cursor: pointer;
+}
+
+.dialog-container {
+  padding: 2rem;
+}
+
+.dialog-subtitle {
+  color: #888888;
+}
+
+.optional {
+  color: #bababa;
+  font-style: italic;
+}
+
+.form {
+  margin-top: 2rem;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 1.6rem;
+}
+
+.form-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.country-selector {
+  width: auto;
+}
+
+.country-selector.expanded {
+  min-width: 85px;
+}
+
+.phone-field {
+  display: flex;
+  align-items: center;
+}
+
+.phone-field input {
+  border: none;
+  min-width: 150px;
+  width: 100%;
+}
+
+.email-field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.email-field input {
+  border: none;
+  width: 100%;
+}
+
+
+.contact-field {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-types {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.contact-types input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.contact-types input,
+.contact-types label {
+  cursor: pointer;
+}
+
+.form-input > input,
+select,
+ .profile-field,
+ .language-field,
+ .phone-field input,
+ .email-field input {
+  padding: 1rem !important;
+  border: 1px solid #e7e6eb !important;
+  background-color: white !important;
+  border-radius: 8px !important;
+}
+
+.actions button {
+  flex: 1;
+  border-radius: 12px;
+}
+
+.action-close {
+  color: #928df4 !important;
+}
+
+.action-submit {
+  color: white !important;
+  background-color: #5047ed;
+}
+
+.action-submit:hover {
+  opacity: 90%;
+}
