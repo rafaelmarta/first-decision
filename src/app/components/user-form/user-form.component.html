@@ -1,0 +1,108 @@
+<div class="dialog-container">
+  <button mat-icon-button class="close-button" (click)="onClose()">
+    <img src="assets/icons/general/close.svg" alt="Fechar">
+  </button>
+  <h2>Adicionar usuário</h2>
+  <h4 class="dialog-subtitle">
+    Aqui você adiciona e configura os usuários que fazem parte da sua equipe
+  </h4>
+  <form [formGroup]="userForm" class="form">
+    <div class="form-group">
+      <div class="form-input">
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" formControlName="name" placeholder="Insira seu nome">
+        <mat-error *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+          Campo não preenchido.
+        </mat-error>
+      </div>
+      <div class="form-input">
+        <label for="lastName">Sobrenome</label>
+        <input type="text" name="lastName" id="lastName" formControlName="lastName" placeholder="Insira seu sobrenome">
+        <mat-error *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">
+          Campo não preenchido.
+        </mat-error>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-input">
+        <label for="phone">Telefone <span class="optional">- Opcional</span></label>
+        <div class="phone-field">
+          <div *ngIf="countrySelected" class="flag-container">
+            <img [src]="countrySelected.flag" alt="{{ countrySelected.name }}" height="16px">
+          </div>
+          <mat-select class="country-selector" [(value)]="countrySelected" (selectionChange)="onCountryChange($event)"
+          (focus)="isExpanded = true" (blur)="isExpanded = false" [class.expanded]="isExpanded">
+            <mat-option *ngFor="let country of countriesList" [value]="country">
+              <img [src]="country.flag" alt="{{ country.name }}" height="16px">
+              ({{country.code}})
+            </mat-option>
+          </mat-select>
+          <input type="phone" name="phone" id="phone" formControlName="phone" [mask]="phoneMask" [placeholder]="phoneMask">
+          </div>
+            <mat-error *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched">
+              Campo não preenchido.
+            </mat-error>
+      </div>
+      <div class="form-input">
+        <label for="email">E-mail corporativo</label>
+        <div class="email-field">
+          <img src="assets/icons/general/mail.svg" alt="mail">
+          <input type="email" name="email" id="email" formControlName="email" placeholder="seuemail@email.com">
+          </div>
+          <mat-error *ngIf="userForm.get('email')?.errors?.['required'] && userForm.get('email')?.touched">
+            Campo não preenchido.
+          </mat-error>
+          <mat-error *ngIf="userForm.get('email')?.errors?.['pattern'] && userForm.get('email')?.touched">
+            E-mail inválido.
+          </mat-error>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-input">
+        <label for="profile">Perfil de acesso</label>
+        <mat-select class="profile-field" name="profile" id="profile" formControlName="profile" multiple>
+          <mat-option value="supervisor">Supervisor</mat-option>
+          <mat-option value="analyst">Analista</mat-option>
+        </mat-select>
+        <mat-error *ngIf="userForm.get('profile')?.invalid && userForm.get('profile')?.touched">
+          Campo não preenchido.
+        </mat-error>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-input">
+        <label for="language">Idioma</label>
+        <mat-select class="language-field" name="language" id="language" formControlName="language">
+          <mat-option value="portuguese">Português BR</mat-option>
+          <mat-option value="english">Inglês</mat-option>
+        </mat-select>
+        <mat-error *ngIf="userForm.get('language')?.invalid && userForm.get('language')?.touched">
+          Campo não preenchido.
+        </mat-error>
+      </div>
+      <div class="form-input">
+        <label for="contact-field">Contato preferencial <span class="optional">- Opcional</span></label>
+        <div class="contact-field">
+          <div class="contact-types">
+            <input type="radio" id="contact-email" name="contactType" formControlName="contactType" value="EMAIL">
+           <label for="contact-email">E-mail</label><br>
+          </div>
+          <div class="contact-types">
+           <input type="radio" id="contact-phone" name="contactType" formControlName="contactType" value="PHONE">
+           <label for="contact-phone">Telefone</label><br>
+          </div>
+          <div class="contact-types">
+           <input type="radio" id="contact-todos" name="contactType" formControlName="contactType" value="TODOS">
+           <label for="contact-todos">Todos</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions class="actions">
+      <button class="action-close" mat-button (click)="onClose()">Fechar</button>
+      <button type="submit" class="action-submit" mat-button cdkFocusInitial (click)="onSubmit()">
+        Enviar convite
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>
